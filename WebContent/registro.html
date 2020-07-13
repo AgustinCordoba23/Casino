@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>REGISTRO CASINO ASAN</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+		<link rel="stylesheet" href="style/registro.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('images/fondo.jpg');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="images/lado.png" alt="">
+				</div>
+				<form action="registro" method="post">
+					<h3>Formulario de Registro</h3>
+					<div class="form-group">
+						<input type="text" name="nombre" placeholder="Nombre" class="form-control">
+						<input type="text" name="apellido" placeholder="Apellido" class="form-control">
+					</div>
+					<div class="form-wrapper">
+						<input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="form-control">
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="text" name= "email" placeholder="Email" class="form-control">
+						<i class="zmdi zmdi-email"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="date" name="fecha_nacimiento" class="form-control">
+						<i class="zmdi zmdi-date"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" name="password" placeholder="Contraseña" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" placeholder="Confirmar contraseña" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button>Registrarse
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>
