@@ -51,7 +51,7 @@ a:hover {
   margin: auto;
   display: flex; }
   .inner .image-holder {
-    width: 50%; }
+    width: 100%; }
   .inner form {
     width: 50%;
     padding-top: 36px;
@@ -196,5 +196,6 @@ button {
   .inner {
     display: block; }
     .inner .image-holder {
-      width: 100%; }
+      width: 100%;
+      height: 100%; }
     .inner form {

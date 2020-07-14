@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
 		<link rel="stylesheet" href="style/registro.css">
+		
 	</head>
 
 	<body>
@@ -14,40 +15,68 @@
 		<div class="wrapper" style="background-image: url('images/fondo.jpg');">
 			<div class="inner">
 				<div class="image-holder">
-					<img src="images/lado.png" alt="">
+					<img src="images/lado.png" width="500px" height="530px">
 				</div>
 				<form action="registro" method="post">
 					<h3>Formulario de Registro</h3>
 					<div class="form-group">
-						<input type="text" name="nombre" placeholder="Nombre" class="form-control">
-						<input type="text" name="apellido" placeholder="Apellido" class="form-control">
+						<input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
+						<input type="text" name="apellido" placeholder="Apellido" class="form-control" required>
 					</div>
 					<div class="form-wrapper">
-						<input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="form-control">
+						<input type="text" name="nombre_usuario" placeholder="Nombre de usuario" class="form-control" required>
 						<i class="zmdi zmdi-account"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="text" name= "email" placeholder="Email" class="form-control">
+						<input type="text" name= "email" placeholder="Email" class="form-control" required>
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="date" name="fecha_nacimiento" class="form-control">
+						<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" required>
 						<i class="zmdi zmdi-date"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="password" name="password" placeholder="Contraseña" class="form-control">
+						<input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" required>
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="password" placeholder="Confirmar contraseña" class="form-control">
+						<input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar contraseña" class="form-control" required>
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<button>Registrarse
+					<span id='message'></span>
+					<button onclick="return Validate()">Registrarse
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
 				</form>
+				
+				<script type="text/javascript">
+					function getAge(birthDateString) {
+				        var today = new Date();
+				        var birthDate = new Date(birthDateString);
+				        var age = today.getFullYear() - birthDate.getFullYear();
+				        var m = today.getMonth() - birthDate.getMonth();
+				        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+				            age--;
+				        }
+				        return age;
+			   	 	}
+				
+				    function Validate(){
+				        var password = document.getElementById("password").value;
+				        var confirmPassword = document.getElementById("confirm_password").value;
+				        if (password != confirmPassword) {
+				            alert("Contraseñas no coinciden");
+				            return false;
+				        }
+				        
+				        if(getAge(document.getElementById("fecha_nacimiento").value) < 18) {
+					        alert("Su edad es menor a 18 años");
+					        return false;
+					    }
+					 return true;
+				    }
+			    </script>
 			</div>
 		</div>
-		
 	</body>
 </html>

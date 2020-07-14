@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+
+html,body{
+	height:100%;
+	width:100%;
+	padding : 0;
+}
+
+.row {
+  display: flex;
+  height: 100%;
+}
+
+.column {
+  width: 100%;
+  float: left;
+  padding: 50px;
+}
+
+.left {
+  width: 25%;
+  background: url(../images/background-right.png)
+}
+
+.right {
+  width: 75%;
+  background: url(../images/background.jpg);
+  background-size: cover;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
