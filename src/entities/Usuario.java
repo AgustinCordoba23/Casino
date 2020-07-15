@@ -9,6 +9,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String nombre_usuario;
+	private String genero;
 	private Date fecha_nacimiento;  
 	
 	public int getId() {
@@ -66,6 +67,12 @@ public class Usuario {
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-	
-	
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 }

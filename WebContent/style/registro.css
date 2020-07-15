@@ -1,4 +1,3 @@
-@charset "ISO-8859-1";
 @font-face {
   font-family: "Poppins-Regular";
   src: url("fonts/poppins/Poppins-Regular.ttf"); }
@@ -51,7 +50,7 @@ a:hover {
   margin: auto;
   display: flex; }
   .inner .image-holder {
-    width: 100%; }
+    width: 50%; }
   .inner form {
     width: 50%;
     padding-top: 36px;
@@ -196,6 +195,10 @@ button {
   .inner {
     display: block; }
     .inner .image-holder {
-      width: 100%;
-      height: 100%; }
+      width: 100%; }
     .inner form {
+      width: 100%;
+      padding: 40px 0 30px; }
+
+  button {
+    margin-top: 60px; } }

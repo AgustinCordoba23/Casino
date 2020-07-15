@@ -13,6 +13,8 @@
 	
 	    <link href="style/casino.css" rel="stylesheet">
 	    
+	    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	    
 	    <% 
 	    	Usuario u= (Usuario)session.getAttribute("usuario");
 	    %>
@@ -22,10 +24,27 @@
 
 	    <div class="row">
 		  <div class="column left">
-		    
-		    
-		    
-		    
+			<div class="w3-container w3-white">
+				 <%if (u.getGenero().equals("femenino")) { %> 
+					<img style="margin-left:60px" src="images/avatar_female.png">
+				<% }else{ %>
+					<img style="margin-left:40px" src="images/avatar_male.png">
+				<% }
+				%>	
+				<div style="text-align:center"> 
+					<h6><%=u.getNombre_usuario()%>#<%=u.getId()%></h6>
+				</div>
+  				<h6>Nombre: <%=u.getNombre() %></h6>
+  				<h6>Apellido: <%=u.getApellido() %></h6>
+  				<h6>Email: <%=u.getEmail() %></h6>
+  				<form action="actualizar" method="get">
+  					<input type="hidden" name="user" value=<%=u.getId()%>>
+  					<button type="submit" class="btn btn-outline-secondary" style="margin-left:55px">Editar perfil</button>
+  				</form>
+			</div> 
+			
+			
+			
 		  </div>
 		  
 		  

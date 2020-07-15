@@ -17,5 +17,9 @@ public class Login {
 	public void add(Usuario u) {
 		du.add(u);
 	}
+	
+	public void update(Usuario u) {
+		du.update(u);
+	}
 
 }

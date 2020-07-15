@@ -1,8 +1,11 @@
+<%@page%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>REGISTRO CASINO ASAN</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>ACTUALIZACION</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 		<link rel="stylesheet" href="style/registro.css">
@@ -15,8 +18,8 @@
 				<div class="image-holder">
 					<img src="images/lado.png" height= "100%" >
 				</div>
-				<form action="registro" method="post">
-					<h3>Formulario de Registro</h3>
+				<form action="actualizar" method="post">
+					<h3>Actualiza todos los siguientes datos. Si hay alguno que no desees, ingresa su valor actual</h3>
 					<div class="form-group">
 						<input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
 						<input type="text" name="apellido" placeholder="Apellido" class="form-control" required>
@@ -26,30 +29,19 @@
 						<i class="zmdi zmdi-account"></i>
 					</div>
 					<div class="form-wrapper">
-						<select name="genero" id="genero" class="form-control">
-								<option value="" disabled selected>Género</option>
-								<option value="masculino">Masculino</option>
-								<option value="femenino">Femenino</option>
-						</select>
-						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
-					</div>
-					<div class="form-wrapper">
 						<input type="text" name= "email" placeholder="Email" class="form-control" required>
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" required>
-						<i class="zmdi zmdi-date"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" required>
+						<input type="password" name="password" id="password" placeholder="Contrase�a" class="form-control">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar contraseña" class="form-control" required>
+						<input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar contrase�a" class="form-control">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<button onclick="return Validate()">Registrarse
+					<input type="hidden" name="id" value=<%=session.getAttribute("id")%>>
+					<button onclick="return Validate()">Actualizar
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
 				</form>
@@ -57,17 +49,6 @@
 		</div>
 				
 	<script type="text/javascript">
-		function getAge(birthDateString) {
-	        var today = new Date();
-	        var birthDate = new Date(birthDateString);
-	        var age = today.getFullYear() - birthDate.getFullYear();
-	        var m = today.getMonth() - birthDate.getMonth();
-	        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-	            age--;
-	        }
-	        return age;
-   	 	}
-	
 	    function Validate(){
 	        var password = document.getElementById("password").value;
 	        var confirmPassword = document.getElementById("confirm_password").value;
@@ -75,11 +56,6 @@
 	            alert("Contraseñas no coinciden");
 	            return false;
 	        }
-	        
-	        if(getAge(document.getElementById("fecha_nacimiento").value) < 18) {
-		        alert("Su edad es menor a 18 años");
-		        return false;
-		    }
 		 return true;
 	    }
     </script>
