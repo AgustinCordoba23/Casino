@@ -48,9 +48,13 @@ public class Registro extends HttpServlet {
 			e.printStackTrace();
 		}
         
-        ctrl.add(u);
-
-        request.getRequestDispatcher("index.html").forward(request, response);    
+        Boolean b = ctrl.add(u);
+        
+        if(b) {
+        	request.getRequestDispatcher("index.html").forward(request, response);
+        } else {
+        	request.getRequestDispatcher("registro.html").forward(request, response);
+        }       
 	}
 
 }

@@ -16,10 +16,11 @@
 		<div class="wrapper" style="background-image: url('images/fondo.jpg');">
 			<div class="inner">
 				<div class="image-holder">
-					<img src="images/lado.png" height= "100%" >
+					<img src="images/lado-update.png" height= "100%" >
 				</div>
 				<form action="actualizar" method="post">
-					<h3>Actualiza todos los siguientes datos. Si hay alguno que no desees, ingresa su valor actual</h3>
+					<h3>Actualiza todos los siguientes datos</h3>
+					<h4 style="margin-bottom: 10px; text-align:center">Si hay alguno que no desees, ingresa su valor actual</h4>
 					<div class="form-group">
 						<input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
 						<input type="text" name="apellido" placeholder="Apellido" class="form-control" required>

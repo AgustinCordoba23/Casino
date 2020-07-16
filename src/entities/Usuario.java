@@ -10,7 +10,8 @@ public class Usuario {
 	private String password;
 	private String nombre_usuario;
 	private String genero;
-	private Date fecha_nacimiento;  
+	private Date fecha_nacimiento; 
+	private int dinero;
 	
 	public int getId() {
 		return id;
@@ -74,5 +75,13 @@ public class Usuario {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public int getDinero() {
+		return dinero;
+	}
+
+	public void setDinero(int dinero) {
+		this.dinero = dinero;
 	}
 }

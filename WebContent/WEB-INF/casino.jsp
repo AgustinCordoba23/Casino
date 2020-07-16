@@ -37,22 +37,36 @@
   				<h6>Nombre: <%=u.getNombre() %></h6>
   				<h6>Apellido: <%=u.getApellido() %></h6>
   				<h6>Email: <%=u.getEmail() %></h6>
+  				<h6>Dinero actual: $<%=u.getDinero() %></h6>
   				<form action="actualizar" method="get">
   					<input type="hidden" name="user" value=<%=u.getId()%>>
-  					<button type="submit" class="btn btn-outline-secondary" style="margin-left:55px">Editar perfil</button>
+  					<button type="submit" class="btn btn-outline-secondary" style="margin-left:53px; margin-bottom:10px">Editar perfil</button>
   				</form>
 			</div> 
 			
-			
+			<form action="recargar_dinero" method="get">
+  					<input type="hidden" name="user" value=<%=u.getId()%>>
+  					<button type="submit" class="btn btn-warning" style="margin-top: 10px; margin-left:53px">Recargar dinero</button>
+  			</form>
+  			
+  			<form action="retirar_dinero" method="get">
+  					<input type="hidden" name="user" value=<%=u.getId()%>>
+  					<button type="submit" class="btn btn-success" style="margin-top: 10px; margin-left:60px">Retirar dinero</button>
+  			</form>
+  			
+  			<form action="" method="">
+  					<input type="hidden" name="user" value=<%=u.getId()%>>
+  					<button type="" class="btn btn-primary" style="margin-top: 10px; margin-left:82px">TOPs 10</button>
+  			</form>
 			
 		  </div>
-		  
-		  
+
 		  <div class="column right">
 		    
 		    
-		    
-		    
+		    <button type="submit" style="margin-left:100px"><img src="images/bj.png" width="250px" height="250px"></button>
+		    <button type="submit" style="margin-left:200px"><img src="images/ruleta.jpg" width="250px" height="250px"></button>
+		    <button type="submit" style="margin-left:340px;margin-top:30px"><img src="images/loteria.png" width="250px" height="250px"></button>
 		    
 		  </div>
 		</div>

@@ -16,7 +16,7 @@
 					<img src="images/lado.png" height= "100%" >
 				</div>
 				<form action="registro" method="post">
-					<h3>Formulario de Registro</h3>
+					<h3 style="margin-bottom: 5px; margin-top:-20px">Formulario de Registro</h3>
 					<div class="form-group">
 						<input type="text" name="nombre" placeholder="Nombre" class="form-control" required>
 						<input type="text" name="apellido" placeholder="Apellido" class="form-control" required>
@@ -49,9 +49,10 @@
 						<input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar contraseña" class="form-control" required>
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<button onclick="return Validate()">Registrarse
+					<button onclick="return Validate()" style="margin-top:0; margin-bottom: 10px">Registrarse
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+					<p style="text-align:center"><small>Si se vuelve a presentar, el email ya está siendo utilizado</small></p>
 				</form>
 			</div>
 		</div>

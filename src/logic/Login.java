@@ -14,12 +14,16 @@ public class Login {
 		return du.getUsuario(u);
 	}
 	
-	public void add(Usuario u) {
-		du.add(u);
+	public Boolean add(Usuario u) {
+		return du.add(u);
 	}
 	
 	public void update(Usuario u) {
 		du.update(u);
+	}
+	
+	public Usuario getById(Usuario u) {
+		return du.getById(u);
 	}
 
 }

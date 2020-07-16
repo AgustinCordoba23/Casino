@@ -32,9 +32,12 @@ public class Signin extends HttpServlet {
         
         u = ctrl.validate(u);
         
-        request.getSession().setAttribute("usuario", u); 
-
-        request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response);    
+        if (u==null) {
+        	request.getRequestDispatcher("index.html").forward(request, response);
+        } else {
+            request.getSession().setAttribute("usuario", u); 
+            request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response); 
+        }
 	}
 
 }
