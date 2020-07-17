@@ -14,7 +14,7 @@
 	<table>
 				<tr>
 					<th> 
-					<div class="container">
+					<div class="container" >
 					    <div class="row">
 					        <div class="col-md-12">
 				            <div class="panel panel-default credit-card-box">
@@ -96,8 +96,5 @@
 					<th> <img src="images/recarga.png" width="550px" height="500px"></th>
 				</tr>
 		</table>
-
-
-
 </body>
 </html>
