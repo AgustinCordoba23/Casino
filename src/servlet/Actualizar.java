@@ -31,24 +31,34 @@ public class Actualizar extends HttpServlet {
         String apellido = request.getParameter("apellido");
         String email = request.getParameter("email");
         
-        Usuario u = new Usuario();
-        u.setNombre_usuario(nombre_usuario);
-        u.setNombre(nombre);
-        u.setApellido(apellido);
-        u.setEmail(email);
-        u.setPassword(password);
+        Usuario v = new Usuario();
         Integer id = Integer.parseInt(request.getParameter("id"));
-        u.setId(id);   
-        ctrl.update(u);
+        v.setId(id);
+        v.setEmail(email);
+        int b = ctrl.validateEmail(v);
+        System.out.println(b);
         
-        Usuario nuevo = new Usuario();
-        nuevo.setNombre_usuario(nombre_usuario);
-        nuevo.setPassword(password);
-        nuevo = ctrl.validate(nuevo);
+        if(b==id || b==0) {
+        	Usuario u = new Usuario();
+            u.setNombre_usuario(nombre_usuario);
+            u.setNombre(nombre);
+            u.setApellido(apellido);
+            u.setEmail(email);
+            u.setPassword(password);
+            u.setId(id);             
+            ctrl.update(u);          
+            Usuario nuevo = new Usuario();
+            nuevo.setNombre_usuario(nombre_usuario);
+            nuevo.setPassword(password);
+            nuevo = ctrl.validate(nuevo);          
+            request.getSession().setAttribute("usuario", nuevo); 
+            request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response);
+        } else{
+        	request.getSession().setAttribute("id", id);
+    		request.getRequestDispatcher("WEB-INF/update.jsp").forward(request, response); 
+        }
+ 
         
-        request.getSession().setAttribute("usuario", nuevo); 
-
-        request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response);
         
 	}
 

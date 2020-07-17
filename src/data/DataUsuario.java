@@ -200,4 +200,34 @@ public class DataUsuario {
 		}	
 		return u;
 	}
+	
+	public Integer validateEmail(Usuario u) {
+		PreparedStatement stmt= null;
+		ResultSet rs=null;
+		try {
+			stmt= Conexion.getInstancia().getConn().prepareStatement(
+					"select id from usuarios where email=?");
+			stmt.setString(1, u.getEmail());
+			System.out.println(u.getEmail());
+			rs = stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				int id = rs.getInt("id");
+				System.out.println(id);
+				return id;
+			}
+			return 0;
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				Conexion.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
 }

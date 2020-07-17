@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +35,15 @@ public class Signin extends HttpServlet {
         u = ctrl.validate(u);
         
         if (u==null) {
-        	request.getRequestDispatcher("index.html").forward(request, response);
+        	//esto no anda, no escribe el script ¿?
+        	PrintWriter out = response.getWriter();
+        	out.println("<script type=\"text/javascript\">");
+        	out.println("function load_error(){");
+        	out.println("alert('Usuario no encontrado');");
+        	//out.println("return false;");
+        	out.println("}");
+        	out.println("</script>");
+        	response.sendRedirect("index.html"); 
         } else {
             request.getSession().setAttribute("usuario", u); 
             request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response); 

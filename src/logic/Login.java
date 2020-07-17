@@ -25,5 +25,8 @@ public class Login {
 	public Usuario getById(Usuario u) {
 		return du.getById(u);
 	}
+	public Integer validateEmail(Usuario u) {
+		return du.validateEmail(u);
+	}
 
 }

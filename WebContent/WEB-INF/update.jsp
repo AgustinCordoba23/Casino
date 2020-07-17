@@ -42,9 +42,10 @@
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<input type="hidden" name="id" value=<%=session.getAttribute("id")%>>
-					<button onclick="return Validate()">Actualizar
+					<button onclick="return Validate()" style="margin-top:10px; margin-bottom:10px">Actualizar
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+					<p style="text-align:center"><small>Si se vuelve a presentar, el email ya está siendo utilizado</small></p>
 				</form>
 			</div>
 		</div>
