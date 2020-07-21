@@ -78,9 +78,8 @@
 						    ASAN'S BJ.</small></p>
 					 </div>
 				    <div class="cold-md-4" style="margin:auto">
-				    <form action="blackjack" method="post">
+				    <form action="blackjack" method="get">
 				    	<input type="hidden" name="id" value=<%=u.getId()%>>
-				    	<input type="hidden" name="nombre_usuario" value=<%=u.getNombre_usuario()%>>
 				    	<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
 				    	<button type="submit" class="btn btn-success">JUGAR</button>
 				    </form>
@@ -102,9 +101,8 @@
 							ofrece diferentes opciones de apuestas. Prueba tus estrategias aquí: ASAN'S ROULETTE.</small></p>
 					 </div>
 				    <div class="cold-md-4" style="margin:auto">
-				    <form action="ruleta" method="post">
+				    <form action="ruleta" method="get">
 				    	<input type="hidden" name="id" value=<%=u.getId()%>>
-				    	<input type="hidden" name="nombre_usuario" value=<%=u.getNombre_usuario()%>>
 				    	<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
 				    	<button type="submit" class="btn btn-success">JUGAR</button>
 				    </form>
@@ -126,9 +124,8 @@
 							 banco y vivir una vida libre de preocupaciones. Prueba tu suerte aquí: ASAN'S LOTTERY. </small></p>
 					 </div>
 				    <div class="cold-md-4" style="margin:auto">
-				    <form action="loteria" method="post">
+				    <form action="loteria" method="get">
 				    	<input type="hidden" name="id" value=<%=u.getId()%>>
-				    	<input type="hidden" name="nombre_usuario" value=<%=u.getNombre_usuario()%>>
 				    	<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
 				    	<button type="submit" class="btn btn-success">JUGAR</button>
 				    </form>
