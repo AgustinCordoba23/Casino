@@ -12,24 +12,24 @@
 	    <title>ASAN'S LOTTERY</title>
 	
 	    <link href="style/bootstrap.css" rel="stylesheet"> 
-	    <link href="style/loteria.css" rel="stylesheet">   
+	    <link href="style/juegos.css" rel="stylesheet">   
 	    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	  	</head>
 
 <body>
 
-	<div class="w3-container w3-pale-yellow" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951">
+	<div class="w3-container w3-khaki" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951">
 	<div class="row">
 		<div class="col-md-4">
-			<h6 style="background: pale-yellow">Dinero disponible: $<%=session.getAttribute("dinero")%></h6>
+			<h6 style="background: khaki">Dinero disponible: $<%=session.getAttribute("dinero")%></h6>
 			<input type="text" name="apuesta" id="apuesta" placeholder="Haga su apuesta" class="form-control" style="text-align:center">
 			<img src="images/numeros-loteria.png" style="margin-top:20px; border: 2px solid #711585">
 			<table align="center" style="margin-top:20px" >
 				<tr>
-				<td><input type="text" name="numero_1" id="numero_1" placeholder="00" size="5" style="text-align:center"></td>
-				<td><input type="text" name="numero_2" id="numero_2" placeholder="00" size="5" style="text-align:center"></td>		
-				<td><input type="text" name="numero_3" id="numero_3" placeholder="00" size="5" style="text-align:center"></td>
-				<td><input type="text" name="numero_4" id="numero_4" placeholder="00" size="5" style="text-align:center"></td>
+				<td><input type="text" name="numero_1" id="numero_1" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
+				<td><input type="text" name="numero_2" id="numero_2" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>		
+				<td><input type="text" name="numero_3" id="numero_3" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
+				<td><input type="text" name="numero_4" id="numero_4" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
 				</tr>
 			</table>
 		</div>
@@ -38,18 +38,37 @@
 		
 			<table align="center" style="margin-top:20px" >
 				<tr>
-				<td><input type="text" name="numero_1_r" id="numero_1_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px"></td>
-				<td><input type="text" name="numero_2_r" id="numero_2_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px"></td>		
-				<td><input type="text" name="numero_3_r" id="numero_3_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px"></td>
-				<td><input type="text" name="numero_4_r" id="numero_4_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px"></td>
+				<td><input type="text" name="numero_1_r" id="numero_1_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px; border:1px solid green"></td>
+				<td><input type="text" name="numero_2_r" id="numero_2_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px; border:1px solid green"></td>		
+				<td><input type="text" name="numero_3_r" id="numero_3_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px; border:1px solid green"></td>
+				<td><input type="text" name="numero_4_r" id="numero_4_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px; border:1px solid green"></td>
 				</tr>
 			</table>
 			
-			<button type="button" id="button" class="btn btn-danger" onclick="return random_nro()" style="margin-top:20px; width: 100px; height: 50px; background:#711585">TIRAR</button>
+			<button type="button" id="tirar" class="btn btn-danger" onclick="return random_nro()" style="margin-top:20px; width: 100px; height: 50px; background:#711585">TIRAR</button>
 			
-			<h1 hidden id="h1" style="background:pale-yellow; margin-top:20px"></h1>
-			<img hidden id="ganaste" src="images/asan_win.jpg" style="margin-top:20px" height="50%">
-			<img hidden id="perdiste" src="images/asan_vino.png" style="margin-top:20px" height="50%">
+			<h1 hidden id="h1" style="background:khaki; margin-top:20px; color:green"></h1>
+			
+			<div class="row">
+				<div class="col-md-8">
+					<img hidden id="ganaste" src="images/asan_win.jpg" style="margin-top:20px" height="250px">
+					<img hidden id="perdiste" src="images/asan_vino.png" style="margin-top:20px" height="250px">
+				</div>
+				<div class="col-md-3">
+					<form action="loteria" method="post">
+	  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+	  					<input type="hidden" name="ganancia" id="ganancia_0" value=""> 
+	  					<input type="hidden" name="tipo" id="tipo" value="0">
+						<button hidden type="submit" id="again" class="btn btn-primary" style="margin-top:40px">JUGAR DE NUEVO</button>
+  					</form>
+					<form action="loteria" method="post">
+	  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+	  					<input type="hidden" name="ganancia" id="ganancia_1" value=""> 
+	  					<input type="hidden" name="tipo" id="tipo" value="1">
+						<button hidden type="submit" id="volver" class="btn btn-primary" style="margin-top:20px">VOLVER</button>
+  					</form>
+				</div>	
+			</div>
 			
 		</div>
 		</div>
@@ -60,16 +79,10 @@
 		function randomNumber() {
 		    var randomNumber;
 		    var n = '';
-	        randomNumber = Math.floor(Math.random() * 10);
-	        if(randomNumber<9){
+	        randomNumber = Math.floor(Math.random() * 9);
 	        	n = randomNumber.toString();
 		        n = 0+n;
-	        	return n;
-	        } else {
-	        	n = '08';
-	        	return n;
-	        }
-	          
+	        	return n;          
 		}
 		
 		function random_nro(){
@@ -91,9 +104,6 @@
 			document.getElementById("numero_2_r").value = randomNumber();
 			document.getElementById("numero_3_r").value = randomNumber();
 			document.getElementById("numero_4_r").value = randomNumber();
-			
-			const button = document.querySelector('button');
-			button.disabled = true;
 			
 			var n1 = document.getElementById("numero_1").value;
 			var n2 = document.getElementById("numero_2").value;
@@ -120,6 +130,10 @@
 				contador+=1;
 			}
 			
+			document.getElementById("again").removeAttribute("hidden");
+			document.getElementById('volver').removeAttribute("hidden");
+			document.getElementById('tirar').disabled = true;
+			
 			if (contador===0){
 				let p = document.getElementById('h1');
 				let m = document.getElementById('perdiste');
@@ -127,6 +141,9 @@
 				p.innerHTML="PERDISTE $" + apuesta;
 				p.removeAttribute("hidden");
 				m.removeAttribute("hidden");
+				apuesta = "-" + apuesta;
+				document.getElementById("ganancia_0").value = apuesta;
+				document.getElementById("ganancia_1").value = apuesta;
 				return true;
 			} else{
 				let p = document.getElementById('h1');	
@@ -137,6 +154,8 @@
 				p.innerHTML="ACERTASTE " + contador + " VECES. GANASTE $" + ganancia;
 				p.removeAttribute("hidden");
 				m.removeAttribute("hidden");
+				document.getElementById("ganancia_0").value = ganancia;
+				document.getElementById("ganancia_1").value = ganancia;
 				return true;
 			}
 		}	

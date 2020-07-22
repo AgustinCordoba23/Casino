@@ -230,4 +230,27 @@ public class DataUsuario {
 		return 0;
 	}
 	
+	public void add_historial(Usuario u, Integer juego) {
+		PreparedStatement stmt= null;
+		try {
+			stmt=Conexion.getInstancia().getConn().prepareStatement(
+			"insert into historial (id_usuario, ganancia, id_juego) values (?,?,?)");
+			stmt.setInt(1, u.getId());
+			stmt.setInt(2, u.getDinero());
+			stmt.setInt(3, juego);
+			stmt.executeUpdate();
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	}
+	
 }

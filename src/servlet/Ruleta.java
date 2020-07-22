@@ -14,18 +14,18 @@ import logic.Login;
 import logic.MovimientosDinero;
 
 
-@WebServlet({ "/Loteria", "/loteria"})
-public class Loteria extends HttpServlet {
+@WebServlet({ "/Ruleta", "/ruleta"})
+public class Ruleta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Loteria() {}
+    public Ruleta() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer u = Integer.parseInt(request.getParameter("id")); 
 		Integer dinero = Integer.parseInt(request.getParameter("dinero"));
 		request.getSession().setAttribute("id", u);
 		request.getSession().setAttribute("dinero", dinero);
-		request.getRequestDispatcher("WEB-INF/games/loteria.jsp").forward(request, response); 
+		request.getRequestDispatcher("WEB-INF/games/ruleta.jsp").forward(request, response); 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +42,7 @@ public class Loteria extends HttpServlet {
 		u.setDinero(ganancia);
 		
 		rcg.recargar(u);
-		hist.add(u, 1);
+		hist.add(u, 3);
         
         Usuario nuevo = new Usuario();
         nuevo.setId(id);
@@ -51,7 +51,7 @@ public class Loteria extends HttpServlet {
 		if(tipo==0) {
 			request.getSession().setAttribute("id", id);
 			request.getSession().setAttribute("dinero", nuevo.getDinero());
-			request.getRequestDispatcher("WEB-INF/games/loteria.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/games/ruleta.jsp").forward(request, response);
 		} else {
 			request.getSession().setAttribute("usuario", nuevo); 
 	        request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response);

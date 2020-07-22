@@ -19,21 +19,8 @@ body{
   	background-attachment: fixed;
 }
 
-.container {
-	margin:0 auto;
-	width:266px;
-}
 
-.slot-wrapper {
-	 border: 1px solid #000000;
-}
 
-.slot {
-	background:url("images/reel_normal.png") repeat-y; /*Taken from http://www.swish-designs.co.uk*/
-	width:86px;
-	height:70px;
-	float:left;
-	border:1px solid #000;
-	background-position:0 4px;
-}
+
+
 	
