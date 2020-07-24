@@ -33,15 +33,17 @@ public class Registro extends HttpServlet {
         String fecha_nacimiento_string = request.getParameter("fecha_nacimiento");
         String email = request.getParameter("email");
         String genero = request.getParameter("genero");
+        Integer dinero = 0;
         
         Usuario u = new Usuario();
-        
+
         u.setNombre_usuario(nombre_usuario);
         u.setPassword(password);
         u.setNombre(nombre);
         u.setApellido(apellido);
         u.setEmail(email);
         u.setGenero(genero);
+        u.setDinero(dinero);
         try {
 			u.setFecha_nacimiento(new SimpleDateFormat("yyyy-MM-dd").parse(fecha_nacimiento_string));
 		} catch (ParseException e) {

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="style/recarga.css">
 </head>
 <body>
+	<div class="wrapper">
 	<table>
 				<tr>
 					<th> 
@@ -95,5 +96,6 @@
 					<th> <img src="images/asan_win.jpg" width="550px" height="430px"></th>
 				</tr>
 		</table>
+		</div>
 </body>
 </html>

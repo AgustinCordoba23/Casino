@@ -6,10 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 		<link rel="stylesheet" href="style/registro.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
 
-	<body>
-
+<body>
 		<div class="wrapper" style="background-image: url('images/fondo.jpg');">
 			<div class="inner">
 				<div class="image-holder">
@@ -56,34 +56,33 @@
 				</form>
 			</div>
 		</div>
-				
-	<script type="text/javascript">
-		function getAge(birthDateString) {
-	        var today = new Date();
-	        var birthDate = new Date(birthDateString);
-	        var age = today.getFullYear() - birthDate.getFullYear();
-	        var m = today.getMonth() - birthDate.getMonth();
-	        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-	            age--;
-	        }
-	        return age;
-   	 	}
+	</body>
 	
-	    function Validate(){
-	        var password = document.getElementById("password").value;
-	        var confirmPassword = document.getElementById("confirm_password").value;
-	        if (password != confirmPassword) {
-	            alert("Contraseñas no coinciden");
-	            return false;
-	        }
-	        
-	        if(getAge(document.getElementById("fecha_nacimiento").value) < 18) {
+	<script>
+		function getAge(birthDateString) {
+		    var today = new Date();
+		    var birthDate = new Date(birthDateString);
+		    var age = today.getFullYear() - birthDate.getFullYear();
+		    var m = today.getMonth() - birthDate.getMonth();
+		    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+		        age--;
+		    }
+		    return age;
+		}
+	
+		function Validate(){
+		    var password = document.getElementById("password").value;
+		    var confirmPassword = document.getElementById("confirm_password").value;
+		    if (password != confirmPassword) {
+		        alert("Contraseñas no coinciden");
+		        return false;
+		    }
+		    
+		    if(getAge(document.getElementById("fecha_nacimiento").value) < 18) {
 		        alert("Su edad es menor a 18 años");
 		        return false;
 		    }
 		 return true;
-	    }
-    </script>
-			
-	</body>
+		}
+	</script>
 </html>

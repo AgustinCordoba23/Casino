@@ -21,7 +21,7 @@
 
 		<div class="row">
 			<div class="col-md-4">
-				<h6 style="background: khaki">Dinero disponible: $<%=session.getAttribute("dinero")%></h6>
+				<h6 style="background: khaki">DINERO DISPONIBLE $<%=session.getAttribute("dinero")%></h6>
 				<table align="center" style="margin-top:10px; border:1px solid green">
 					<tr>
 						<td>APUESTA</td>
@@ -88,7 +88,17 @@
 			<div class="col-md-8">
 				<img src="images/ruleta_pa.jpg" style="margin-top:20px">
 				
-				<button type="button" id="tirar" class="btn btn-danger" onclick="return jugar()" style="margin-top:20px; width: 100px; height: 50px; background:#711585">TIRAR</button>
+				<table align="center">
+					<tr>
+					<td>
+						<form action="VolverMenu" method="post">
+		  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+							<button type="submit" id="volver_menu" class="btn btn-primary" style="margin-top:20px; width: 100px; height: 50px; margin-right:10px">VOLVER</button>
+						</form>
+					</td>
+					<td><button type="button" id="tirar" class="btn btn-danger" onclick="return jugar()" style="margin-top:20px; width: 100px; height: 50px; background:#711585; margin-left:10px">TIRAR</button></td>
+					</tr>
+				</table>
 
 				<h1 hidden id="h1" style="background:khaki; margin-top:20px; color:green"></h1>
 				<h1 hidden id="h2" style="background:khaki; margin-top:20px; color:green"></h1>
@@ -119,7 +129,7 @@
 		
 		</div>
 	
-	<script type="text/javascript">
+	<script>
 		function jugar(){
 		
 			var apuesta = document.getElementById("apuesta_rojo").value;
@@ -336,6 +346,7 @@
 			}
 			document.getElementById("again").removeAttribute("hidden");
 			document.getElementById('volver').removeAttribute("hidden");
+			document.getElementById("volver_menu").disabled = true;
 			return true;
 		}
 	</script>

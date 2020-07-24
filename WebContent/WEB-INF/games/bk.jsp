@@ -13,40 +13,61 @@
 	    <link href="style/bootstrap.css" rel="stylesheet"> 
 	    <link href="style/juegos.css" rel="stylesheet">   
 	    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	    
+	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	    
+	    <!-- ESTO NO ANDA: NO LO RECONOCE POR MAS QUE PROBEMOS CON TODOS LOS PATHS  
+			<script src="bk.js"></script>
+		-->
 </head>
 <body>
 	<div class="w3-container" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951; background-color: #269300">
-		<h6 style="background: #269300">Dinero disponible: $<%=session.getAttribute("dinero")%></h6>		
-		<img src="images/croupier.png">
-		<table id="tabla_croupier" align="center" style="margin-bottom:10px">
+		<h6 style="background: #269300">DINERO DISPONIBLE $<%=session.getAttribute("dinero")%></h6>		
+		<div class="row">
+			<div class="col-md-3">
+			
+					<img src="images/lado.png">
+			
+			</div>
+		
+		<div class="col-md-6">
+		
+		<img src="images/croupier.png" hight="90%" width="90%">
+		<table id="tabla_croupier" align="center" style="margin-bottom:10px; margin-top:10px">
 			<tr>
-				<td> <img hidden id="carta_1c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_2c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_3c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_4c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_5c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_6c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_7c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_8c" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_9c" src="" width="45px" height="65px"> </td>
-				<td> <input hidden type="text" name="contador_crupier" id="contador_crupier" size="1" value="" disabled></td>
+				<td> <img hidden id="carta_1c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_2c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_3c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_4c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_5c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_6c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_7c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_8c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_9c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <input hidden type="text" name="contador_crupier" id="contador_crupier" size="1" value=""  style="text-align:center; background: orange; border: 0" disabled></td>
 			</tr>
 		</table>
 		
-		<table align="center" style="border:2px solid green">
+		<table align="center" style="border:1px solid brown">
 			<tr>
-				<td> Haga su apuesta: </td>
+				<td style="color:gold "> Haga su apuesta: </td>
 				<td> <input type="text" name="apuesta" id="apuesta" placeholder="$0000" class="form-control" size="5" style="text-align:center; background: #90ee90; margin-left: 10px">
 				<td> <button type="button" id="jugar" class="btn btn-danger" onclick="return jugar()" style="margin-left: 50px; width: 100px; height: 50px; background:#711585">JUGAR</button></td>
+				<td>
+					<form action="VolverMenu" method="post">
+	  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+						<button type="submit" id="volver_menu" class="btn btn-primary" style="width: 100px; height: 45px; margin-left:10px">VOLVER</button>
+					</form>
+				</td>
 		</table>
 		
 		<table id="tabla_user" align="center" style="margin-top:10px; margin-bottom:10px">
 			<tr>
-				<td> <img hidden id="carta_1u" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_2u" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_3u" src="" width="45px" height="65px"> </td>
-				<td> <img hidden id="carta_4u" src="" width="45px" height="65px"> </td>
-				<td> <input hidden type="text" name="contador_user" id="contador_user" size="1" value="" disabled></td>
+				<td> <img hidden id="carta_1u" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_2u" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_3u" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <img hidden id="carta_4u" src="" width="45px" height="65px" style="margin-right:5px"> </td>
+				<td> <input hidden type="text" name="contador_user" id="contador_user" size="1" value="" style="text-align:center; background: orange; border: 0" disabled></td>
 			</tr>
 		</table>
 		
@@ -54,8 +75,8 @@
 
 		<table align="center">
 			<tr>
-				<td><button hidden type="button" id="otra" class="btn btn-success" onclick="otra()" style="margin-left: 50px; width: 100px; height: 40px">OTRA</button></td>
-				<td><button hidden type="button" id="plantarse" class="btn btn-danger" onclick="plantarse()" style="margin-left: 50px; width: 150px; height: 40px">PLANTARSE</button></td>	
+				<td><button hidden type="button" id="otra" class="btn btn-success" onclick="otra()" style="margin-left: 20px; width: 100px; height: 40px">OTRA</button></td>
+				<td><button hidden type="button" id="plantarse" class="btn btn-danger" onclick="plantarse()" style="margin-left: 20px; width: 150px; height: 40px">PLANTARSE</button></td>	
 			</tr>
 		</table>
 		
@@ -67,7 +88,7 @@
 		  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
 		  					<input type="hidden" name="ganancia" id="ganancia_0" value=""> 
 		  					<input type="hidden" name="tipo" id="tipo" value="0">
-							<button hidden type="submit" id="again" class="btn btn-primary" style="margin-top:20px">JUGAR DE NUEVO</button>
+							<button hidden type="submit" id="again" class="btn btn-primary">JUGAR DE NUEVO</button>
   					</form>
 				</div>
 				<div class="col-md-6">
@@ -75,19 +96,35 @@
 	  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
 	  					<input type="hidden" name="ganancia" id="ganancia_1" value=""> 
 	  					<input type="hidden" name="tipo" id="tipo" value="1">
-						<button hidden type="submit" id="volver" class="btn btn-primary" style="margin-top:20px">VOLVER</button>
+						<button hidden type="submit" id="volver" class="btn btn-primary">VOLVER</button>
   					</form>
 				</div>
 		</div>
+		
+		</div>
+		
+			<div class="col-md-3">
+			
+					asdasdwas
+			
+			</div>
 	</div>
-
+	</div>
 
 	<script>
 		function jugar(){
+			document.getElementById("volver_menu").disabled = true;
 			var apuesta = document.getElementById("apuesta").value;
 			
 			if(apuesta === ""){
 				alert("No has apostado, por favor ingresa un valor");
+				return false;
+			}
+			
+			apuesta = parseFloat(apuesta);
+			
+			if (apuesta><%=session.getAttribute("dinero")%>){
+				alert("No puedes apostar más dinero del que tienes");
 				return false;
 			}
 			
@@ -114,7 +151,7 @@
 			}
 			
 			document.getElementById("n").value = n;
-
+	
 			document.getElementById("contador_crupier").value = contador_crupier;
 			let p = document.getElementById("contador_crupier");
 			p.removeAttribute("hidden");
@@ -184,7 +221,7 @@
 			
 			return true;
 		}
-		
+	
 		function otra(){
 			var numeros = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
 			var colores = ["C", "D", "P", "T"];
@@ -225,7 +262,7 @@
 				document.getElementById("volver").removeAttribute("hidden");
 			}
 		}
-		
+	
 		function plantarse(){
 			var numeros = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
 			var colores = ["C", "D", "P", "T"];
@@ -268,7 +305,7 @@
 				} else{
 					contador_crupier += n; 
 				}
-
+	
 				var nombre_id = "carta_" + contador_carta + "c";
 				
 				let cc = document.getElementById(nombre_id);
@@ -278,7 +315,7 @@
 				document.getElementById("contador_crupier").value = contador_crupier;
 				contador_carta += 1;
 			}
-
+	
 			var contador_user = document.getElementById("contador_user").value;
 			contador_user = parseFloat(contador_user);
 			
@@ -310,10 +347,8 @@
 			document.getElementById("volver").removeAttribute("hidden");
 			
 		}
-	
+
 	</script>
-
-
 
 </body>
 </html>

@@ -55,7 +55,7 @@
 	        var password = document.getElementById("password").value;
 	        var confirmPassword = document.getElementById("confirm_password").value;
 	        if (password != confirmPassword) {
-	            alert("ContraseÃ±as no coinciden");
+	            alert("Contraseñas no coinciden");
 	            return false;
 	        }
 		 return true;

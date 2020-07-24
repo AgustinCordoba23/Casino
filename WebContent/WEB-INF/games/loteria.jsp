@@ -21,21 +21,21 @@
 	<div class="w3-container w3-khaki" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951">
 	<div class="row">
 		<div class="col-md-4">
-			<h6 style="background: khaki">Dinero disponible: $<%=session.getAttribute("dinero")%></h6>
+			<h6 style="background: khaki">DINERO DISPONIBLE $<%=session.getAttribute("dinero")%></h6>
 			<input type="text" name="apuesta" id="apuesta" placeholder="Haga su apuesta" class="form-control" style="text-align:center">
 			<img src="images/numeros-loteria.png" style="margin-top:20px; border: 2px solid #711585">
 			<table align="center" style="margin-top:20px" >
 				<tr>
-				<td><input type="text" name="numero_1" id="numero_1" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
-				<td><input type="text" name="numero_2" id="numero_2" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>		
-				<td><input type="text" name="numero_3" id="numero_3" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
-				<td><input type="text" name="numero_4" id="numero_4" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
+				<td><input type="text" pattern="\d+" name="numero_1" id="numero_1" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
+				<td><input type="text" pattern="\d+" name="numero_2" id="numero_2" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>		
+				<td><input type="text" pattern="\d+" name="numero_3" id="numero_3" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
+				<td><input type="text" pattern="\d+" name="numero_4" id="numero_4" placeholder="00" size="5" maxlength="2" style="text-align:center"></td>
 				</tr>
 			</table>
 		</div>
 		
 		<div class="col-md-8">
-		
+			<h6>CADA ACIERTO SE PAGA 1:0.5 </h6>
 			<table align="center" style="margin-top:20px" >
 				<tr>
 				<td><input type="text" name="numero_1_r" id="numero_1_r" placeholder="00" size="5" disabled style="text-align:center; font-size:35px; border:1px solid green"></td>
@@ -45,14 +45,24 @@
 				</tr>
 			</table>
 			
-			<button type="button" id="tirar" class="btn btn-danger" onclick="return random_nro()" style="margin-top:20px; width: 100px; height: 50px; background:#711585">TIRAR</button>
+			<table align="center">
+				<tr>
+				<td>
+					<form action="VolverMenu" method="post">
+	  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+						<button type="submit" id="volver_menu" class="btn btn-primary" style="margin-top:20px; width: 100px; height: 50px; margin-right:10px">VOLVER</button>
+					</form>
+				</td>
+				<td><button type="button" id="tirar" class="btn btn-danger" onclick="return random_nro()" style="margin-top:20px; width: 100px; height: 50px; background:#711585; margin-left:10px">TIRAR</button></td>
+				</tr>
+			</table>
 			
 			<h1 hidden id="h1" style="background:khaki; margin-top:20px; color:green"></h1>
 			
 			<div class="row">
 				<div class="col-md-8">
-					<img hidden id="ganaste" src="images/asan_win.jpg" style="margin-top:20px" height="250px">
-					<img hidden id="perdiste" src="images/asan_vino.png" style="margin-top:20px" height="250px">
+					<img hidden id="ganaste" src="images/asan_win.jpg" style="margin-top:20px; border-radius:15px; border:2px solid red" height="250px">
+					<img hidden id="perdiste" src="images/asan_vino.png" style="margin-top:20px; border-radius:15px; border:2px solid red" height="250px">
 				</div>
 				<div class="col-md-3">
 					<form action="loteria" method="post">
@@ -110,6 +120,11 @@
 			var n3 = document.getElementById("numero_3").value;
 			var n4 = document.getElementById("numero_4").value;
 			
+			if (n1<"01" || n1>"08" || n2<"01" || n2>"08" || n3<"01" || n3>"08" || n4<"01" || n4>"08"){
+				alert("Debes ingresar tus 4 números elegidos respetando el formato");
+				return false;
+			}
+			
 			var n1_r = document.getElementById("numero_1_r").value;
 			var n2_r = document.getElementById("numero_2_r").value;
 			var n3_r = document.getElementById("numero_3_r").value;
@@ -133,6 +148,7 @@
 			document.getElementById("again").removeAttribute("hidden");
 			document.getElementById('volver').removeAttribute("hidden");
 			document.getElementById('tirar').disabled = true;
+			document.getElementById("volver_menu").disabled = true;
 			
 			if (contador===0){
 				let p = document.getElementById('h1');
@@ -148,7 +164,7 @@
 			} else{
 				let p = document.getElementById('h1');	
 				let m = document.getElementById('ganaste');
-				var ganancia = apuesta*0.25*contador;	
+				var ganancia = apuesta*0.5*contador;	
 				ganancia = ganancia.toString();
 				contador = contador.toString();
 				p.innerHTML="ACERTASTE " + contador + " VECES. GANASTE $" + ganancia;

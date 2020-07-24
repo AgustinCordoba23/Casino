@@ -57,7 +57,7 @@ public class DataUsuario {
 				try {
 					stmt=Conexion.getInstancia().getConn().
 							prepareStatement(
-									"insert into usuarios(usuario, contraseña, nombre, apellido, email, fecha_nacimiento, genero) values(?,?,?,?,?,?,?)"
+									"insert into usuarios(usuario, contraseña, nombre, apellido, email, fecha_nacimiento, genero, dinero) values(?,?,?,?,?,?,?,?)"
 									);
 					stmt.setString(1, u.getNombre_usuario());
 					stmt.setString(2, u.getPassword());
@@ -66,6 +66,7 @@ public class DataUsuario {
 					stmt.setString(5, u.getEmail());
 					stmt.setDate(6, new java.sql.Date(u.getFecha_nacimiento().getTime()));
 					stmt.setString(7, u.getGenero());
+					stmt.setInt(8, u.getDinero());
 					stmt.executeUpdate();
 				}  catch (SQLException e) {
 		            e.printStackTrace();
