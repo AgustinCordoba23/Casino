@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="wrapper">
-	<table>
+	<table align="center">
 				<tr>
 					<th> 
 					<div class="container">
@@ -75,27 +75,47 @@
 				                        <div class="row">
 				                            <div class="col-xs-12">
 				                                <div class="form-group">
-				                                    <label for="couponCode">MONTO (u$d) -no puedes retirar más de lo que tienes-</label>
+				                                    <label for="couponCode">MONTO (u$d)</label>
 				                                    <input name="monto" id="monto" type="text" class="form-control"/> 
 				                                </div>
 				                            </div>                        
 				                        </div>
 				                        <div class="row">
 				                            <div class="col-xs-12">
-				                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">RETIRAR</button>
+				                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit" onclick="return Validate()">RETIRAR</button>
 				                            </div>
 				                        </div>
 				                        <input type="hidden" name="id" value=<%=session.getAttribute("id")%>>
 				                    </form>
 				                </div>
-		            		</div>   
+		            		</div>  
+		            		<form action="VolverMenu" method="post">
+				  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+									<button type="submit" id="volver_menu" class="btn btn-primary" style="width: 100px; height: 30px">VOLVER</button>
+								</form>
 		            	</div>
 		            </div>
-		            </div>         	
+		            </div>     
 					</th>
 					<th> <img src="images/asan_win.jpg" width="550px" height="430px"></th>
 				</tr>
 		</table>
 		</div>
+		
+		<script>
+		function Validate(){
+			var monto = document.getElementById("monto").value;
+
+			monto = parseFloat(monto);
+			
+			if (monto><%=session.getAttribute("dinero")%>){
+				alert("No puedes retirar más dinero del que tienes");
+				return false;
+			}
+			
+			return true;
+		}
+		</script>
+		
 </body>
 </html>

@@ -17,4 +17,8 @@ public class MovimientosDinero {
 	public void retirar(Usuario u) {
 		du.retirar(u);
 	}
+	
+	public void historial_movimiento(Usuario u, Integer tipo) {
+		du.historial_movimiento(u, tipo);
+	}
 }

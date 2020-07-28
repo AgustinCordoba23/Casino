@@ -90,8 +90,13 @@
 				                    </form>
 				                </div>
 		            		</div>   
+		            		<form action="VolverMenu" method="post">
+				  					<input type="hidden" name="id" id="id" value=<%=session.getAttribute("id")%>>
+									<button type="submit" id="volver_menu" class="btn btn-primary" style="width: 100px; height: 30px">VOLVER</button>
+							</form>
 		            	</div>
 		            </div>
+		              
 		            </div>         	
 					</th>
 					<th> <img src="images/recarga.png" width="550px" height="500px"></th>

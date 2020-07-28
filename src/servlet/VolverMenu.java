@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Usuario;
-import logic.Login;
+import logic.User;
 
 
 @WebServlet({ "/VolverMenu", "/volver_menu"})
@@ -22,7 +22,7 @@ public class VolverMenu extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login ctrl=new Login();
+		User ctrl=new User();
 		Integer id = Integer.parseInt(request.getParameter("id")); 
         
         Usuario nuevo = new Usuario();

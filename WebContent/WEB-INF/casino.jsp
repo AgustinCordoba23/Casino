@@ -43,27 +43,34 @@
   					<button type="submit" class="btn btn-outline-secondary" style="margin-bottom:10px">Editar perfil</button>
   				</form>
 			</div> 
+			
 			<div class="w3-container w3-trasnparent" style="text-align:center">
-			<form action="recargar_dinero" method="get">
-  					<input type="hidden" name="user" value=<%=u.getId()%>>
-  					<button type="submit" class="btn btn-warning" style="margin-top: 10px">Recargar dinero</button>
-  			</form>
-  			
-  			<form action="retirar_dinero" method="get">
-  					<input type="hidden" name="user" value=<%=u.getId()%>>
-  					<button type="submit" class="btn btn-success" style="margin-top: 10px">Retirar dinero</button>
-  			</form>
-  			
-  			<form action="" method="">
-  					<input type="hidden" name="user" value=<%=u.getId()%>>
-  					<button type="" class="btn btn-primary" style="margin-top: 10px">TOPs 10</button>
-  			</form>
+				<form action="recargar_dinero" method="get">
+	  					<input type="hidden" name="user" value=<%=u.getId()%>>
+	  					<button type="submit" class="btn btn-warning" style="margin-top: 10px">Recargar dinero</button>
+	  			</form>
+	  			
+	  			<form action="retirar_dinero" method="get">
+	  					<input type="hidden" name="user" value=<%=u.getId()%>>
+	  					<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
+	  					<button type="submit" class="btn btn-success" style="margin-top: 10px">Retirar dinero</button>
+	  			</form>
+	  			
+	  			<form action="historial_movimientos" method="post">
+	  					<input type="hidden" name="user" value=<%=u.getId()%>>
+	  					<button type="submit" class="btn btn-secundary" style="margin-top: 10px">Movimientos</button>
+	  			</form>
+	  			
+	  			<form action="top" method="post">
+	  					<input type="hidden" name="user" value=<%=u.getId()%>>
+	  					<button type="submit" class="btn btn-primary" style="margin-top: 10px">TOPs 10</button>
+	  			</form>
 			</div>
 		  </div>
 
 		  <div class="column right">
 		    <div class="w3-container w3-transparent" style="margin:auto; text-align:center; margin-top:10px; border-radius:25px; border: 2px solid #711585; padding:5px;">
-		    	<div class="row">
+		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
 				    <div class="col-md-3">
 				   		 <img src="images/bj.png" width="200px" height="150px" style="border-radius:25px">
 				    </div>
@@ -85,7 +92,7 @@
 				    </div>
 			    </div>
 		    
-		    	<div class="row">
+		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
 				    <div class="col-md-3">
 				   		 <img src="images/ruleta.jpg" width="200px" height="150px" style="border-radius:25px">
 				    </div>
@@ -106,7 +113,7 @@
 				    </div>
 		    </div>
 		    
-		    	<div class="row">
+		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
 				    <div class="col-md-3">
 				   		 <img src="images/loteria.png" width="200px" height="150px" style="border-radius:25px">
 				    </div>

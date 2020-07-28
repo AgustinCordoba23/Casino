@@ -3,10 +3,10 @@ package logic;
 import data.*;
 import entities.*;
 
-public class Login {
+public class User {
 	private DataUsuario du;
 	
-	public Login() {
+	public User() {
 		du=new DataUsuario();
 	}
 	
@@ -25,6 +25,7 @@ public class Login {
 	public Usuario getById(Usuario u) {
 		return du.getById(u);
 	}
+	
 	public Integer validateEmail(Usuario u) {
 		return du.validateEmail(u);
 	}

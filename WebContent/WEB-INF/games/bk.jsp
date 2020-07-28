@@ -25,14 +25,12 @@
 		<h6 style="background: #269300">DINERO DISPONIBLE $<%=session.getAttribute("dinero")%></h6>		
 		<div class="row">
 			<div class="col-md-3">
-			
-					<img src="images/lado.png">
-			
+					<img src="images/bj_girls.png" height="520px" width="120%">
 			</div>
 		
 		<div class="col-md-6">
 		
-		<img src="images/croupier.png" hight="90%" width="90%">
+		<img src="images/croupier.png" height="250px" width="90%">
 		<table id="tabla_croupier" align="center" style="margin-bottom:10px; margin-top:10px">
 			<tr>
 				<td> <img hidden id="carta_1c" src="" width="45px" height="65px" style="margin-right:5px"> </td>
@@ -104,12 +102,11 @@
 		</div>
 		
 			<div class="col-md-3">
-			
-					asdasdwas
-			
+				<img src="images/bj_singer.png" height="520px" width="100%">		
 			</div>
 	</div>
 	</div>
+	
 
 	<script>
 		function jugar(){

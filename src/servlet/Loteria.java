@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import entities.Usuario;
 import logic.Historial;
-import logic.Login;
+import logic.User;
 import logic.MovimientosDinero;
 
 
@@ -29,7 +29,7 @@ public class Loteria extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login ctrl=new Login();
+		User ctrl=new User();
 		Historial hist = new Historial();
 		MovimientosDinero rcg=new MovimientosDinero();
 		Integer id = Integer.parseInt(request.getParameter("id")); 

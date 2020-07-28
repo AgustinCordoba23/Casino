@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Usuario;
-import logic.Login;
+import logic.User;
 
 @WebServlet({ "/Signin", "/signin", "/signIn", "/SignIn", "/SIGNIN" })
 public class Signin extends HttpServlet {
@@ -23,7 +23,7 @@ public class Signin extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Login ctrl=new Login();
+        User ctrl=new User();
 		String nombre_usuario=request.getParameter("usuario");
         String password=request.getParameter("password");
         

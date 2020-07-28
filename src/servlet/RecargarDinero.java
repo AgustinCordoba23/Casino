@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Usuario;
-import logic.Login;
+import logic.User;
 import logic.MovimientosDinero;
 
 @WebServlet({ "/Recargar_dinero", "/recargar_dinero"})
@@ -25,7 +25,7 @@ public class RecargarDinero extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login ctrl=new Login();
+		User ctrl=new User();
 		MovimientosDinero rcg=new MovimientosDinero();
 		Usuario u = new Usuario();
 		Integer dinero= Integer.parseInt(request.getParameter("monto"));
@@ -33,11 +33,12 @@ public class RecargarDinero extends HttpServlet {
         u.setId(id);
         u.setDinero(dinero);
         rcg.recargar(u);
+        rcg.historial_movimiento(u, 0);
         
         Usuario nuevo = new Usuario();
         nuevo.setId(id);
         nuevo = ctrl.getById(nuevo);
-        
+
         request.getSession().setAttribute("usuario", nuevo); 
 
         request.getRequestDispatcher("WEB-INF/casino.jsp").forward(request, response);

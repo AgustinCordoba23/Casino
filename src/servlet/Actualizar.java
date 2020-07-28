@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Usuario;
-import logic.Login;
+import logic.User;
 
 @WebServlet({ "/Actualizar", "/actualizar"})
 public class Actualizar extends HttpServlet {
@@ -24,7 +24,7 @@ public class Actualizar extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login ctrl=new Login();
+		User ctrl=new User();
 		String nombre_usuario=request.getParameter("nombre_usuario");
         String password=request.getParameter("password");
         String nombre = request.getParameter("nombre");

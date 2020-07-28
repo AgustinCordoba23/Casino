@@ -254,4 +254,33 @@ public class DataUsuario {
 		}
 	}
 	
+	public void historial_movimiento(Usuario u, Integer tipo) {
+		PreparedStatement stmt= null;
+		Integer dinero;
+		try {
+			if (tipo == 1) {
+				dinero = u.getDinero() * (-1);
+			} else {
+				dinero = u.getDinero();
+			}
+			stmt=Conexion.getInstancia().getConn().prepareStatement(
+			"insert into movimientos (id_usuario, monto, fecha_hora) values (?,?,current_timestamp())");
+			stmt.setInt(1, u.getId());
+			stmt.setInt(2, dinero);
+			stmt.executeUpdate();			
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		
+	}
+	
 }
