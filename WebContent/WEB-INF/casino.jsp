@@ -65,6 +65,8 @@
 	  					<input type="hidden" name="user" value=<%=u.getId()%>>
 	  					<button type="submit" class="btn btn-primary" style="margin-top: 10px">TOPs 10</button>
 	  			</form>
+	  			
+	  			<button type="button" class="btn btn-dark" onclick="window.location.href='index.html'" style="margin-top: 10px">Cerrar Sesión</button>
 			</div>
 		  </div>
 

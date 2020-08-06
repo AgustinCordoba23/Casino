@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.LinkedList;
+
 import data.*;
 import entities.*;
 
@@ -20,5 +22,9 @@ public class MovimientosDinero {
 	
 	public void historial_movimiento(Usuario u, Integer tipo) {
 		du.historial_movimiento(u, tipo);
+	}
+	
+	public LinkedList<Movimiento> getMovimientos(Usuario u){
+		return du.getMovimientos(u);
 	}
 }

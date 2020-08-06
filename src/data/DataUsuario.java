@@ -3,6 +3,7 @@ package data;
 import entities.*;
 
 import java.sql.*;
+import java.util.LinkedList;
 
 public class DataUsuario {
 	
@@ -281,6 +282,75 @@ public class DataUsuario {
             }
 		}
 		
+	}
+	
+	public LinkedList<Movimiento> getMovimientos(Usuario u){
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Movimiento> mov= new LinkedList<>();
+		try {
+			stmt= Conexion.getInstancia().getConn().prepareStatement(
+			"select monto, fecha_hora from movimientos where id_usuario=? limit 20");
+			stmt.setInt(1, u.getId());
+			rs = stmt.executeQuery();
+			if(rs!=null) {
+				while(rs.next()) {
+					Movimiento m = new Movimiento();
+					m.setFecha(rs.getTimestamp("fecha_hora"));
+					m.setMonto(rs.getInt("monto"));
+					mov.add(m);
+				}
+			}
+		}catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		return mov;
+	}
+	
+	public LinkedList<UsuarioTop> getTop(Integer juego){
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<UsuarioTop> top = new LinkedList<>();
+		try {
+			stmt= Conexion.getInstancia().getConn().prepareStatement(
+			"select usuario, sum(ganancia) as ganancia from usuarios u " + 
+			"inner join historial h on u.id=h.id_usuario " + 
+			"where id_juego=? " + 
+			"group by 1 " + 
+			"order by 2 desc " + 
+			"limit 10");
+			stmt.setInt(1, juego);
+			rs = stmt.executeQuery();
+			if(rs!=null) {
+				while(rs.next()) {
+					UsuarioTop u = new UsuarioTop();
+					u.setNombre_usuario(rs.getString("usuario"));
+					u.setGanancia(rs.getInt("ganancia"));
+					top.add(u);
+				}
+			}
+		}catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		return top;
 	}
 	
 }

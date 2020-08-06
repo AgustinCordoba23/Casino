@@ -9,7 +9,6 @@
 
 body{
 	background-color: #4C0013;
-	margin-top: 50px;
 	padding : 0;
 	background: url(../images/blue-carpet.png);
 	background-size: cover;
@@ -19,7 +18,15 @@ body{
   	background-attachment: fixed;
 }
 
-
+.col {
+    float: left;
+}
+.row {
+    width: 100%;
+}
+.third {
+    width: 33.33%;
+}
 
 
 
