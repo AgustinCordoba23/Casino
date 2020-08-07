@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("fonts/poppins/Poppins-Regular.ttf"); }
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("fonts/poppins/Poppins-SemiBold.ttf"); }
+
+body{
+	background-color: #4C0013;
+	padding : 0;
+	background: url(../images/admin.jpg);
+	background-size: cover;
+	font-family: sans-serif;
+  	background-position: center center;
+  	background-repeat: no-repeat;
+  	background-attachment: fixed;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}

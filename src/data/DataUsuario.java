@@ -13,7 +13,7 @@ public class DataUsuario {
 		ResultSet rs=null;
 		try {
 			stmt=Conexion.getInstancia().getConn().prepareStatement(
-					"select id,nombre,apellido,email,genero,dinero from usuarios where usuario=? and contraseña=?"
+					"select id,nombre,apellido,email,genero,dinero,rol from usuarios where usuario=? and contraseña=?"
 					);
 			stmt.setString(1, user.getNombre_usuario());
 			stmt.setString(2, user.getPassword());
@@ -27,6 +27,7 @@ public class DataUsuario {
 				u.setGenero(rs.getString("genero"));
 				u.setNombre_usuario(user.getNombre_usuario());
 				u.setDinero(rs.getInt("dinero"));
+				u.setRol(rs.getInt("rol"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -58,7 +59,7 @@ public class DataUsuario {
 				try {
 					stmt=Conexion.getInstancia().getConn().
 							prepareStatement(
-									"insert into usuarios(usuario, contraseña, nombre, apellido, email, fecha_nacimiento, genero, dinero) values(?,?,?,?,?,?,?,?)"
+									"insert into usuarios(usuario, contraseña, nombre, apellido, email, fecha_nacimiento, genero, dinero, rol) values(?,?,?,?,?,?,?,?,?)"
 									);
 					stmt.setString(1, u.getNombre_usuario());
 					stmt.setString(2, u.getPassword());
@@ -68,6 +69,7 @@ public class DataUsuario {
 					stmt.setDate(6, new java.sql.Date(u.getFecha_nacimiento().getTime()));
 					stmt.setString(7, u.getGenero());
 					stmt.setInt(8, u.getDinero());
+					stmt.setInt(9, u.getRol());
 					stmt.executeUpdate();
 				}  catch (SQLException e) {
 		            e.printStackTrace();
@@ -352,5 +354,88 @@ public class DataUsuario {
 		}
 		return top;
 	}
+	
+	public void changeRol(Usuario u) {
+		PreparedStatement stmt=null;
+		try {
+			stmt=Conexion.getInstancia().getConn().prepareStatement(
+			"update usuarios set rol=? where email=?");
+			stmt.setInt(1, u.getRol());
+			stmt.setString(2, u.getEmail());
+			stmt.executeUpdate();
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	}
+	
+	public void delete(Usuario u) {
+		PreparedStatement stmt=null;
+		try {
+			stmt=Conexion.getInstancia().getConn().prepareStatement(
+			"delete from usuarios where email=?");
+			stmt.setString(1, u.getEmail());
+			stmt.executeUpdate();
+		}  catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	}
+	
+	public LinkedList<Usuario> getAll(){
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Usuario> users= new LinkedList<>();
+		try {
+			stmt= Conexion.getInstancia().getConn().prepareStatement(
+			"select id, usuario, nombre, apellido, email, fecha_nacimiento, genero, dinero, rol from usuarios");
+			rs = stmt.executeQuery();
+			if(rs!=null) {
+				while(rs.next()) {
+					Usuario u = new Usuario();
+					u.setApellido(rs.getString("apellido"));
+					u.setDinero(rs.getInt("dinero"));
+					u.setEmail(rs.getString("email"));
+					u.setFecha_nacimiento(rs.getDate("fecha_nacimiento"));
+					u.setGenero(rs.getString("genero"));
+					u.setId(rs.getInt("id"));
+					u.setNombre(rs.getString("nombre"));
+					u.setNombre_usuario(rs.getString("usuario"));
+					u.setRol(rs.getInt("rol"));
+					users.add(u);
+				}
+			}
+		}catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(stmt!=null) {
+                	stmt.close();
+                }   
+                Conexion.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		return users;
+	}
+	
+	
 	
 }

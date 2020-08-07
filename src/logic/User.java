@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.LinkedList;
+
 import data.*;
 import entities.*;
 
@@ -28,6 +30,18 @@ public class User {
 	
 	public Integer validateEmail(Usuario u) {
 		return du.validateEmail(u);
+	}
+	
+	public void changeRol(Usuario u) {
+		du.changeRol(u);
+	}
+	
+	public void delete(Usuario u) {
+		du.delete(u);
+	}
+	
+	public LinkedList<Usuario> getAll(){
+		return du.getAll();
 	}
 
 }

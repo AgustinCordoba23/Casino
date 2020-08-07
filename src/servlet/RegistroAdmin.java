@@ -1,9 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-//import java.util.Date;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import entities.Usuario;
 import logic.User;
 
-@WebServlet({ "/Registro", "/registro"})
-public class Registro extends HttpServlet {
+@WebServlet({ "/RegistroAdmin", "/registro_admin"})
+public class RegistroAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Registro() {}
+    public RegistroAdmin() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,11 +27,11 @@ public class Registro extends HttpServlet {
         String password=request.getParameter("password");
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
-        String fecha_nacimiento_string = request.getParameter("fecha_nacimiento");
         String email = request.getParameter("email");
         String genero = request.getParameter("genero");
-        Integer dinero = 0;
-        Integer rol = 2;
+        Integer dinero = 9999999;
+        Integer rol = 1;
+        Date fecha = new Date();
         
         Usuario u = new Usuario();
 
@@ -46,19 +43,18 @@ public class Registro extends HttpServlet {
         u.setGenero(genero);
         u.setDinero(dinero);
         u.setRol(rol);
-        try {
-			u.setFecha_nacimiento(new SimpleDateFormat("yyyy-MM-dd").parse(fecha_nacimiento_string));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+        u.setFecha_nacimiento(fecha);
         
         Boolean b = ctrl.add(u);
+        if (b) {}
         
-        if(b) {
-        	request.getRequestDispatcher("index.html").forward(request, response);
-        } else {
-        	request.getRequestDispatcher("registro.html").forward(request, response);
-        }       
+		Integer id = Integer.parseInt(request.getParameter("user")); 
+        Usuario nuevo = new Usuario();
+        nuevo.setId(id);
+        nuevo = ctrl.getById(nuevo);
+        
+        request.getSession().setAttribute("usuario", nuevo); 
+        request.getRequestDispatcher("WEB-INF/admin/admin.jsp").forward(request, response);      
 	}
 
 }

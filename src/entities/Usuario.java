@@ -12,6 +12,7 @@ public class Usuario {
 	private String genero;
 	private Date fecha_nacimiento; 
 	private int dinero;
+	private int rol;
 	
 	public int getId() {
 		return id;
@@ -84,4 +85,13 @@ public class Usuario {
 	public void setDinero(int dinero) {
 		this.dinero = dinero;
 	}
+
+	public int getRol() {
+		return rol;
+	}
+
+	public void setRol(int rol) {
+		this.rol = rol;
+	}
+	
 }
