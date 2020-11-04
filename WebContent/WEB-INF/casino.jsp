@@ -38,6 +38,11 @@
   				<h6>Apellido: <%=u.getApellido() %></h6>
   				<h6>Email: <%=u.getEmail() %></h6>
   				<h6>Dinero actual: $<%=u.getDinero() %></h6>
+  				
+  			<!-- Los botones asignan atributos para luego trabajar con ellos en los servlets, no es la forma correcta
+			ya que la sesión ya se encuentra invocada. En primera instancia lo hicimos así y cuando nos dimos cuenta del error
+			era muy tarde para refactorear todo el codigo, desde todos los jsp hasta todos los servlet y demas clases de java -->
+  				
   				<form action="actualizar" method="get">
   					<input type="hidden" name="user" value=<%=u.getId()%>>
   					<button type="submit" class="btn btn-outline-secondary" style="margin-bottom:10px">Editar perfil</button>
@@ -71,7 +76,29 @@
 		  </div>
 
 		  <div class="column right">
-		    <div class="w3-container w3-transparent" style="margin:auto; text-align:center; margin-top:10px; border-radius:25px; border: 2px solid #711585; padding:5px;">
+		    <div class="w3-container w3-transparent" style="margin:auto; text-align:center; border-radius:25px; border: 2px solid #711585; padding:5px;">
+		    
+		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
+				    <div class="col-md-3">
+				   		 <img src="images/ruleta.jpg" width="200px" height="150px" style="border-radius:25px">
+				    </div>
+				    <div class="col-md-7" style="color:gold; text-align: justify" >
+							<p><small>La ruleta se juega en la mesa de la ruleta, en donde se enumeran todos los resultados 
+							posibles y en donde los jugadores ponen sus apuestas en función del resultado que predicen. 
+							El crupier hace girar la rueda de la ruleta y arroja la bola de la ruleta en la rueda. La bola 
+							finalmente caerá en un número y se darán a conocer a los ganadores de esa ronda particular de la 
+							ruleta. La ruleta se juega en contra del casino y no en contra de otros jugadores. El juego 
+							ofrece diferentes opciones de apuestas. Prueba tus estrategias aquí: ASAN'S ROULETTE.</small></p>
+					 </div>
+				    <div class="cold-md-4" style="margin:auto">
+				    <form action="ruleta" method="get">
+				    	<input type="hidden" name="id" value=<%=u.getId()%>>
+				    	<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
+				    	<button type="submit" class="btn btn-success">JUGAR</button>
+				    </form>
+				    </div>
+		    	</div>
+		    	
 		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
 				    <div class="col-md-3">
 				   		 <img src="images/bj.png" width="200px" height="150px" style="border-radius:25px">
@@ -93,27 +120,6 @@
 				    </form>
 				    </div>
 			    </div>
-		    
-		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
-				    <div class="col-md-3">
-				   		 <img src="images/ruleta.jpg" width="200px" height="150px" style="border-radius:25px">
-				    </div>
-				    <div class="col-md-7" style="color:gold; text-align: justify" >
-							<p><small>La ruleta se juega en la mesa de la ruleta, en donde se enumeran todos los resultados 
-							posibles y en donde los jugadores ponen sus apuestas en función del resultado que predicen. 
-							El crupier hace girar la rueda de la ruleta y arroja la bola de la ruleta en la rueda. La bola 
-							finalmente caerá en un número y se darán a conocer a los ganadores de esa ronda particular de la 
-							ruleta. La ruleta se juega en contra del casino y no en contra de otros jugadores. El juego 
-							ofrece diferentes opciones de apuestas. Prueba tus estrategias aquí: ASAN'S ROULETTE.</small></p>
-					 </div>
-				    <div class="cold-md-4" style="margin:auto">
-				    <form action="ruleta" method="get">
-				    	<input type="hidden" name="id" value=<%=u.getId()%>>
-				    	<input type="hidden" name="dinero" value=<%=u.getDinero()%>>
-				    	<button type="submit" class="btn btn-success">JUGAR</button>
-				    </form>
-				    </div>
-		    </div>
 		    
 		    	<div class="row" style="margin-top:10px; margin-bottom:10px">
 				    <div class="col-md-3">

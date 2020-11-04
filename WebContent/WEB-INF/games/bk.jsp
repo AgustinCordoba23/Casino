@@ -15,10 +15,7 @@
 	    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	    
 	    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	    
-	    <!-- ESTO NO ANDA: NO LO RECONOCE POR MAS QUE PROBEMOS CON TODOS LOS PATHS  
-			<script src="bk.js"></script>
-		-->
+
 </head>
 <body>
 	<div class="w3-container" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951; background-color: #269300">

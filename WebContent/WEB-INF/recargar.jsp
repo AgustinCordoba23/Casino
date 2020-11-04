@@ -76,14 +76,14 @@
 				                        <div class="row">
 				                            <div class="col-xs-12">
 				                                <div class="form-group">
-				                                    <label for="couponCode">MONTO (u$d)</label>
+				                                    <label for="couponCode">MONTO (u$d) -límite 1000u$d-</label>
 				                                    <input name="monto" id="monto" type="text" class="form-control"/> 
 				                                </div>
 				                            </div>                        
 				                        </div>
 				                        <div class="row">
 				                            <div class="col-xs-12">
-				                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">RECARGAR</button>
+				                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit" onclick="return Validate()">RECARGAR</button>
 				                            </div>
 				                        </div>
 				                        <input type="hidden" name="id" value=<%=session.getAttribute("id")%>>
@@ -103,5 +103,26 @@
 				</tr>
 		</table>
 		</div>
+		
+		<script>
+		function Validate(){
+			var monto = document.getElementById("monto").value;
+
+			monto = parseFloat(monto);
+			
+			if (monto>1000){
+				alert("No puedes recargar mas de 1000 u$d");
+				return false;
+			}
+			
+			if(monto+<%=session.getAttribute("dinero")%>>10000000){
+				alert("Politica: no puedes alojar mas de 10.000.000 u$d en la cuenta");
+				return false;
+			}
+			
+			return true;
+		}
+		</script>
+		
 </body>
 </html>

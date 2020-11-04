@@ -22,7 +22,7 @@
 	    </head>
 <body>
 		<div class="w3-container w3-khaki" style="margin-top:50px; margin-left:50px; margin-right:50px; text-align:center; padding: 10px; border:2px solid #1d2951">
-			<h3> ÚLTIMOS 20 MOVIMIENTOS - INCLUYEN GANANCIAS, PÉRDIDAS, RECARGAS, RETIRO</h3>
+			<h3> ÚLTIMOS 20 MOVIMIENTOS - INCLUYE RECARGAS Y RETIRO</h3>
 			<table align="center" style="border:2px solid #1d2951">
 				<tr>
 					<td>MONTO</td>

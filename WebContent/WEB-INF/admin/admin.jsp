@@ -89,14 +89,20 @@
 		
 		<script>
 			function agregar_usuario(){
+				document.getElementById("cambiar_rol").setAttribute("hidden", true);
+				document.getElementById("eliminar").setAttribute("hidden", true);
 				document.getElementById("agregar_usuario").removeAttribute("hidden");
 			}
 			
 			function cambiar_rol(){
+				document.getElementById("eliminar").setAttribute("hidden", true);
+				document.getElementById("agregar_usuario").setAttribute("hidden", true);
 				document.getElementById("cambiar_rol").removeAttribute("hidden");
 			}
 			
 			function eliminar(){
+				document.getElementById("agregar_usuario").setAttribute("hidden", true);
+				document.getElementById("cambiar_rol").setAttribute("hidden", true);
 				document.getElementById("eliminar").removeAttribute("hidden");
 			}
 		

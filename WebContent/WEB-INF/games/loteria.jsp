@@ -120,7 +120,7 @@
 			var n3 = document.getElementById("numero_3").value;
 			var n4 = document.getElementById("numero_4").value;
 			
-			if (n1<"01" || n1>"08" || n2<"01" || n2>"08" || n3<"01" || n3>"08" || n4<"01" || n4>"08"){
+			if (n1<"00" || n1>"08" || n2<"00" || n2>"08" || n3<"00" || n3>"08" || n4<"00" || n4>"08"){
 				alert("Debes ingresar tus 4 números elegidos respetando el formato");
 				return false;
 			}

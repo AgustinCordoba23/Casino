@@ -34,13 +34,6 @@ public class Signin extends HttpServlet {
         u = ctrl.validate(u);
         
         if (u==null) {
-        	//esto no anda, no escribe el script ¿?
-        	PrintWriter out = response.getWriter();
-        	out.println("<script type=\"text/javascript\">");
-        	out.println("function load_error(){");
-        	out.println("alert('Usuario no encontrado');");
-        	out.println("}");
-        	out.println("</script>");
         	response.sendRedirect("index.html"); 
         } else {
         	if(u.getRol()==2) {

@@ -292,7 +292,7 @@ public class DataUsuario {
 		LinkedList<Movimiento> mov= new LinkedList<>();
 		try {
 			stmt= Conexion.getInstancia().getConn().prepareStatement(
-			"select monto, fecha_hora from movimientos where id_usuario=? limit 20");
+			"select monto, fecha_hora from movimientos where id_usuario=? order by 2 desc limit 20");
 			stmt.setInt(1, u.getId());
 			rs = stmt.executeQuery();
 			if(rs!=null) {
