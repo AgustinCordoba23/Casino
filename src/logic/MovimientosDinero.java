@@ -12,7 +12,7 @@ public class MovimientosDinero {
 		du=new DataUsuario();
 	}
 	
-	public void recargar(Usuario u) {
+	public void recargar(Usuario u){
 		du.recargar(u);
 	}
 	
@@ -20,8 +20,8 @@ public class MovimientosDinero {
 		du.retirar(u);
 	}
 	
-	public void historial_movimiento(Usuario u, Integer tipo) {
-		du.historial_movimiento(u, tipo);
+	public void historial_movimiento(Usuario u, Integer tipo) /* throws Exception */{
+		du.historial_movimiento(u, tipo) ;
 	}
 	
 	public LinkedList<Movimiento> getMovimientos(Usuario u){

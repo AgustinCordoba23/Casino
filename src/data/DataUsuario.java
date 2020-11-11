@@ -127,7 +127,7 @@ public class DataUsuario {
 		}
 	}
 	
-	public void recargar(Usuario u) {
+	public void recargar(Usuario u){
 		PreparedStatement stmt= null;
 		try {
 			stmt=Conexion.getInstancia().getConn().prepareStatement(
@@ -136,7 +136,7 @@ public class DataUsuario {
 			stmt.setInt(2, u.getId());
 			stmt.executeUpdate();
 		}  catch (SQLException e) {
-            e.printStackTrace();
+			e.printStackTrace();
 		} finally {
             try {
                 if(stmt!=null) {
@@ -257,7 +257,7 @@ public class DataUsuario {
 		}
 	}
 	
-	public void historial_movimiento(Usuario u, Integer tipo) {
+	public void historial_movimiento(Usuario u, Integer tipo) { 
 		PreparedStatement stmt= null;
 		Integer dinero;
 		try {

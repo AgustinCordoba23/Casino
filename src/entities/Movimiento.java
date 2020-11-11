@@ -1,8 +1,11 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Movimiento {
+public class Movimiento implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Date fecha;
 	private Integer monto;
 	

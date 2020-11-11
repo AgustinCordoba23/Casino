@@ -32,7 +32,7 @@ public class RecargarDinero extends HttpServlet {
         Integer id = Integer.parseInt(request.getParameter("id"));
         u.setId(id);
         u.setDinero(dinero);
-        rcg.recargar(u);
+		rcg.recargar(u);
         rcg.historial_movimiento(u, 0);
         
         Usuario nuevo = new Usuario();

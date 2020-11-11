@@ -31,5 +31,7 @@ public class HistorialMovimientos extends HttpServlet {
 		request.getSession().setAttribute("id", id);
 		request.getSession().setAttribute("movimientos", movimientos);
 		request.getRequestDispatcher("WEB-INF/movimientos.jsp").forward(request, response); 
+		
+		//try catch para la exccion y dsp redirigir a una pagina de error con mensaje
 	}
 }
