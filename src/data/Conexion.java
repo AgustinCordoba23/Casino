@@ -23,6 +23,7 @@ public class Conexion {
 	private String user= "root";
 	private String password ="QLLeva82460";
 	private String db = "casino";
+	//"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	
 	/*// reclaim-cloud (mariselpass..)
 	private String driver="com.mysql.cj.jdbc.Driver";
