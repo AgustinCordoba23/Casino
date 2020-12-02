@@ -231,6 +231,11 @@
 				return false;
 			}
 			
+			if (apuesta><%=session.getAttribute("dinero")%>){
+				alert("No puedes apostar más dinero del que tienes");
+				return false;
+			} 
+			
 			var n =  Math.floor(Math.random() * 37);			
 			
 			if(n>0 && n<11 && n%2==0){

@@ -13,7 +13,8 @@ public class DataUsuario {
 		ResultSet rs=null;
 		try {
 			stmt=Conexion.getInstancia().getConn().prepareStatement(
-					"select id,nombre,apellido,email,genero,dinero,rol from usuarios where usuario=? and contraseña=?"
+					"select id,nombre,apellido,email,genero,dinero,rol from usuarios where usuario=? "
+					+ "and contraseña=?"
 					);
 			stmt.setString(1, user.getNombre_usuario());
 			stmt.setString(2, user.getPassword());
